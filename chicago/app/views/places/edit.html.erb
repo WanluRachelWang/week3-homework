@@ -1,0 +1,12 @@
+<head>Edit a Place</head>
+<form action=<%= "/places/%d/update"%@place.id %> >
+	<%= simple_format("Title:") %>
+	<input name="title" value=<%= @place.title %>>
+	<%= simple_format("Photo URL:") %>
+	<input name="photo_url" value=<%= @place.photo_url %>>
+	<%= simple_format("Price:") %>
+	<input name="admission_price" value=<%= "%.2f" %(@place[:admission_price]*0.01) %>>
+	<%= simple_format("Description:") %>
+	<%= text_field_tag 'description', nil, :value => @place.description,maxlength: 50, style:"height:100px; width:600px" %>
+	<p><%= submit_tag "Submit"  %></p>
+</form>

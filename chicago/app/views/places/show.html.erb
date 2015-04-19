@@ -1,0 +1,53 @@
+<style>
+h2 {
+    color: white;
+    background: #555;
+    padding: 6px;
+    text-align: center;
+  }
+  .price {
+    color: green;
+    border: solid 2px green;
+    padding: 4px;
+  }
+img {
+    float: left;
+    margin-right: 40px;
+    box-shadow: 8px 8px 4px gray;
+    height: 400px;
+    width: 400px;
+  }
+  h3 {
+    margin-top: 500px;
+    margin-bottom: 500px;
+  }
+.review{
+  margin-top: 350px;
+  margin-bottom: 00px;
+}
+</style>
+<h2><%= @place.title %></h2>
+<p>
+  <span class="price">Admission Price: $<%= "%.2f" %(@place[:admission_price]*0.01) %></span>
+  <%= link_to "Edit", '/places/%d/edit'%@id %>
+</p>
+
+
+
+<%= image_tag @place.photo_url  %>
+<p><%= @place.description %></p>
+<h3 class="review">Reviews</h3>
+<p >Write a review</p>
+<form  action=<%= "/places/%d/review"%@place.id %> >
+  
+  
+  <%= select_tag "rating", "<option value=5>5star</option><option value=4>4star</option><option value=3>3star</option><option value=2>2star</option><option value=1>1star</option>".html_safe,multiple: false %>
+  <%= text_field_tag 'description', nil, maxlength: 50, style:"width:600px" %>
+  <%= submit_tag "Submit"  %>
+</form>
+
+<% @reviews.each do |review| %>
+  <li>
+  <%= review.rating %> <%= review.description %>
+  </li>
+<% end %>

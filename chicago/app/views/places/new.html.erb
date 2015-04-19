@@ -1,0 +1,14 @@
+<head>Add a New Place</head>
+<form action="/places/create">
+	<%= simple_format("Title:") %>
+	<input name="title">
+	<%= simple_format("Photo URL:") %>
+	<input name="photo_url">
+	<%= simple_format("Price:") %>
+	<input name="admission_price">
+	<%= simple_format("Description:") %>
+	<%= text_field_tag 'description', nil, maxlength: 50, style:"height:100px; width:600px" %>
+	<p><%= submit_tag "Submit"  %></p>
+</form>
+
+
